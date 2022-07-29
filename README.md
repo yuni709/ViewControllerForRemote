@@ -1,17 +1,20 @@
 # ViewControllerForRemote
  
 ## 概要
-リモート操作環境でUnrealEngineのビューポート操作を改善するためのプラグインです。
+リモート操作環境におけるUnrealEngineの視点操作を改善するためのプラグインです。
 
-マウスの座標の移動でビューポートを動かすのではなく、ジョイスティックのように中心座標からマウスの位置の差によって視点を移動させます。
+通常のUnrealEngineの視点操作はマウスポインターが画面の外に出ることはありませが、リモート環境での操作ではこの処理が機能せずにマウスポインターが画面から出た時点で視点移動が止まってしまいます。
 
-動画動画動画
+このプラグインではキャラクターの視点移動に対して永続的な入力をします。
+
+これによりリモート環境下の視点移動の問題を解決できます。
+
+https://user-images.githubusercontent.com/67630056/181765595-54fbe33c-59bf-432a-8e37-b12deaa6c9b6.mp4
 
 ## 詳細説明
-Pawn クラスに実装してあるAddControllerPichInputとAddControllerYawInput関数を呼んで視点を変更させています。
+このプラグインはゲームプレイ中の視点操作のみに影響を及ぼします。
 
-
-
+実際の処理は、中心座標とマウス座標の距離を計算し、一定値以上になったときにPawn クラスに実装してあるAddControllerPichInputとAddControllerYawInput関数を呼んで視点を変更させています。
  
 ## インストール方法
 
@@ -24,10 +27,7 @@ Pawn クラスに実装してあるAddControllerPichInputとAddControllerYawInpu
 4.Editorのコンテンツブラウザから Plugin > ViewControllerForRemote Content > Blueprints > BP_ViewportController をレベルに追加
 
 ## 設定項目
-
-設定可能なパラメータはBP_ViewportController内にあります
-
-以下はパラメータの詳細です。
+このプラグインでは設定可能な項目がいくつかあり、全てBP_ViewportControllerから変更できます。
 
 ・isUseJoyCamera
 カメラのコントロールを有効にする
@@ -44,4 +44,5 @@ Pawn クラスに実装してあるAddControllerPichInputとAddControllerYawInpu
 ・AngleTurnrate
 視点を変更する速度を調整
 
-## ライセンス
+## ライセンス表記
+This software is released under the MIT License, see LICENSE.txt.
